@@ -15,7 +15,7 @@ For offline viewing, download `index.html` and open it in a browser. The present
 - Scroll naturally, use the chapter links, or use the previous/next buttons.
 - Use the left/right arrow keys when focus is outside a control.
 - Light mode is the default; Dark mode and fullscreen are available in the controls.
-- Select **Print** (or use the browser’s print command) for a five-page portrait handout: context, three decision pages, and impact/discussion, with space for notes. Printing uses a white background in either screen theme. Letter and A4 are supported; disable browser headers and footers for a clean copy.
+- Select **Print** (or use the browser’s print command) for a five-page portrait handout with two framed, landscape slides per page (one slide on the final page). Each presentation section stays together in its own slide. Printing uses a white background in either screen theme. Letter and A4 are supported; disable browser headers and footers for a clean copy.
 
 ## Edit and deploy
 

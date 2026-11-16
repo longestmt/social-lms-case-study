@@ -33,126 +33,95 @@ h2{font-size:clamp(42px,3.6vw,66px);line-height:1.08}.conclusion{font-size:clamp
 .impact-flow{gap:36px;margin:24px 0 20px}.impact-card{padding-top:14px}.impact-card .label{color:var(--muted)}.impact-card:last-child .label{color:var(--green)}.impact-card h3{font-size:26px;line-height:1.2}.impact-card svg{height:156px;max-height:none;margin:10px 0 0}.impact-card p{font-size:23px;line-height:1.3}.impact-card .label{font-size:15px}.outcome{border-left:4px solid var(--green);background:var(--panel);padding:18px 22px;margin-top:22px;font-size:26px;line-height:1.25}.outcome strong{font-weight:500;color:var(--green)}.impact .note{margin-top:12px}
 @media(min-width:1700px){.scene{padding-inline:max(6vw,calc((100vw - 1500px)/2))}.role{font-size:25px}.description,.decision-bottom p:not(.label){font-size:29px}.note,.evidence{font-size:23px!important}.comparison h3,.impact-card h3{font-size:32px}.comparison,.decision-bottom,.impact-flow{gap:52px}.comparison svg{height:175px}.decision-bottom{padding-top:24px}.impact-card svg{height:220px}.impact-card p{font-size:29px}.impact-card .label{font-size:16px}.outcome{font-size:32px}.product-block p,.stage p{font-size:28px}.balance>p{font-size:30px}}
 @media(max-width:760px){.scene{padding:76px 22px}.slide-heading{align-items:flex-start}h2{font-size:40px}.conclusion{font-size:25px}.role{font-size:19px}.comparison svg{height:auto;max-height:none}.comparison .chosen{padding-top:16px}.comparison h3{font-size:25px}.description,.decision-bottom p:not(.label){font-size:22px}.note,.evidence{font-size:18px!important}.product-blocks{grid-template-columns:1fr;gap:20px}.product-block p{font-size:22px}.impact-card svg{height:auto}.impact-card h3{font-size:25px}.impact-card p{font-size:22px}.outcome{font-size:24px}.balance>p{font-size:23px}}
-/* The handout groups existing scenes; display:contents preserves the screen layout. */
-.print-sheet{display:contents}.print-notes,.print-folio{display:none}
+/* PowerPoint-style handout: two intact, framed slides per portrait sheet. */
+.print-sheet{display:contents}.print-folio,.print-page-heading{display:none}
 @media print {
   @page { size:portrait; margin:14mm; }
-  body,body.dark { --paper:#fff;--ink:#202c29;--muted:#46534b;--line:#87978c;--green:#285f4c;--rust:#913b25;--panel:#fff;--white:#fff;background:#fff;color:var(--ink); }
+  body,body.dark { --paper:#fff;--ink:#202c29;--muted:#46534b;--line:#a6b1a9;--green:#285f4c;--rust:#913b25;--panel:#fff;--white:#fff;background:#fff;color:var(--ink); }
   html { scroll-behavior:auto; }
-  header,footer,.count,.title-bottom a,.discussion-card span { display:none!important; }
-  .print-sheet { display:flex;flex-direction:column;min-height:248mm;break-after:page;break-inside:avoid; }
+  header,footer,.title-bottom a,.discussion-card span { display:none!important; }
+  .print-sheet { display:flex;flex-direction:column;min-height:248mm;gap:0;break-after:page;break-inside:avoid; }
   .print-sheet:last-child { break-after:auto; }
-  .scene { display:block;min-height:0;padding:0;border:0;break-after:auto;break-inside:avoid; }
-  .inner,.cover .inner { width:100%;max-width:none;margin:0; }
+  .print-page-heading { display:flex;justify-content:space-between;gap:6mm;padding:0 0 5mm;font-size:8pt;color:var(--muted); }
+  .scene { position:relative;display:flex;flex-direction:column;justify-content:center;width:calc(100% - 1mm);aspect-ratio:16 / 9;min-height:0;padding:5mm 6mm;margin:0 auto;border:.7pt solid #7e8b83;break-inside:avoid;flex:0 0 auto;background:#fff; }
+  .scene + .scene { margin-top:10mm; }
+  .inner,.cover .inner { width:100%;max-width:none;margin:auto; }
+  .print-folio { display:flex;justify-content:space-between;gap:6mm;margin-top:auto;padding-top:5mm;font-size:8pt;color:var(--muted); }
+  h1 { font-size:32pt;line-height:1; }
+  h2 { font-size:19pt;line-height:1.08; }
   .slide-heading { align-items:baseline;gap:5mm; }
-  h1 { font-size:28pt;line-height:1.05; }
-  h2 { font-size:26pt;line-height:1.08; }
-  .kicker,.label,.case-context .label,.impact-card .label { font-size:9pt;letter-spacing:.06em;margin:0 0 2mm; }
-  .conclusion { font-size:14pt;line-height:1.3;margin:3mm 0 0; }
-  .role { font-size:11.5pt;line-height:1.35;margin:4mm 0 6mm;padding:0; }
-  .description,.decision-bottom p:not(.label),.impact-card p,.product-block p,.case-context p,.discussion-card p { font-size:12pt;line-height:1.35; }
-  .note,.evidence,.discussion-card .cost { font-size:10.5pt!important;line-height:1.35!important;margin-top:3mm; }
-  .comparison { display:grid;grid-template-columns:1fr;gap:6mm; }
-  .comparison>div,.comparison .chosen { display:grid;grid-template-columns:58mm minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:6mm;min-height:41mm;border:0;border-top:1px solid var(--line);padding:4mm 0 0; }
-  .comparison .chosen { border-top:2px solid var(--green); }
-  .comparison .label,.comparison h3,.comparison .description { grid-column:1; }
-  .comparison h3 { font-size:15pt;line-height:1.2;margin:0 0 2mm; }
-  .comparison .description { font-size:11.5pt; }
-  .comparison svg { grid-column:2;grid-row:1 / 4;align-self:center;width:100%;height:auto;max-height:none;margin:0;overflow:visible; }
+  .count { display:block;font-size:7pt; }
+  .kicker,.label,.case-context .label,.impact-card .label { font-size:6.8pt;letter-spacing:.06em;margin:0 0 1.5mm; }
+  .conclusion { font-size:10.5pt;line-height:1.25;margin-top:2mm; }
+  .role { font-size:8pt;line-height:1.3;margin:2.5mm 0 3mm;padding:0; }
+  .comparison,.decision-bottom,.stakeholder-map,.impact-flow,.case-context,.product-blocks { grid-template-columns:1fr 1fr;gap:5mm; }
+  .comparison>div,.comparison .chosen { display:block;padding:2mm 0 0;border:0;border-top:.6pt solid var(--line); }
+  .comparison .chosen { border-top-color:var(--green); }
+  .comparison h3,.impact-card h3,.product-block h3,.discussion-card h3 { font-size:10pt;line-height:1.2;margin:0 0 1.5mm; }
+  .description,.decision-bottom p:not(.label),.impact-card p,.product-block p,.case-context p,.discussion-card p { font-size:9pt;line-height:1.25; }
+  .comparison svg { width:100%;height:20mm;max-height:none;margin-top:2mm;overflow:visible; }
   svg { break-inside:avoid;print-color-adjust:exact;-webkit-print-color-adjust:exact; }
-  .box { stroke-width:1.8; }
-  .decision-bottom { grid-template-columns:1fr 1fr;gap:8mm;margin-top:7mm;padding-top:5mm;border-top:1px solid var(--line); }
-  .decision-bottom .result { border-left:2px solid var(--green);padding-left:5mm; }
-  .decision-sheet .evidence { margin-top:5mm; }
-  .print-notes { display:block;margin-top:auto;padding-top:7mm; }
-  .print-notes .label { color:var(--muted);font-size:8.5pt; }
-  .note-rules { height:21mm;display:grid;grid-template-rows:repeat(3,1fr); }
-  .note-rules i { display:block;border-bottom:.5pt solid #bac3bc; }
-  .print-folio { display:flex;justify-content:space-between;gap:10mm;border-top:1px solid var(--ink);padding-top:3mm;margin-top:6mm;font-size:8.5pt;color:var(--muted); }
-  .brief-sheet .print-folio { margin-top:auto; }
-  .brief-sheet .scene + .scene { margin-top:5mm; }
-  #intro .inner { display:grid;grid-template-columns:1fr auto;gap:3mm 5mm;align-items:center; }
-  #intro h1 br { display:none; }
-  #intro h1 span::before { content:" / "; }
-  .presenter { font-size:12pt;margin:0; }
-  .presenter small { font-size:8.5pt;margin-bottom:1mm; }
-  .title-bottom { grid-column:1 / -1;display:block;margin:0;padding-top:3mm;border-top:1px solid var(--ink); }
-  .title-bottom p { font-size:13pt;line-height:1.3;max-width:none; }
-  #overview .kicker,#product .slide-heading,#stakeholders .kicker { display:none; }
-  #overview h2 { font:700 9pt Arial,Helvetica,sans-serif;letter-spacing:.06em;text-transform:uppercase; }
-  .agenda { display:grid;grid-template-columns:1fr 1fr;gap:3mm 7mm;margin:3mm 0 0;padding:0; }
-  .agenda li,.agenda li:last-child { border:0; }
-  .agenda a { grid-template-columns:6mm 1fr;gap:1mm 2mm;padding:0;align-items:start; }
-  .agenda a::before { grid-row:1 / 3;font-size:11pt; }
-  .agenda strong { font-size:10.5pt; }
-  .agenda span { grid-column:2;font-size:9.5pt;line-height:1.25; }
-  #product { border-top:1px solid var(--line);padding-top:4mm; }
-  #product .conclusion { font-size:11.5pt;margin-top:0; }
-  .product-role { font-size:10.5pt;margin-top:2mm; }
-  .product-grid { display:block;margin:3mm 0; }
-  .product-blocks { grid-template-columns:1fr 1fr;gap:7mm; }
-  .product-block { display:grid;grid-template-columns:7mm 1fr;gap:1mm 2mm;border:0;padding:0; }
-  .product-block svg { grid-row:1 / 3;width:7mm;height:7mm;margin:0; }
-  .product-block h3 { font-size:11.5pt;margin:0; }
-  .product-block p { grid-column:2;font-size:10.5pt; }
-  .case-context { grid-template-columns:1fr 1fr;gap:7mm;padding-top:3mm; }
-  .case-context p { font-size:11pt; }
-  #stakeholders h2 { font-size:19pt; }
-  #stakeholders .conclusion { font-size:11pt;margin-top:2mm; }
-  .stakeholder-map { grid-template-columns:1fr 1fr;gap:7mm;margin:4mm 0 0; }
-  .stake { grid-template-columns:29mm 1fr;gap:3mm;min-height:16mm;padding:3mm 0;align-items:start; }
-  .stake b { font-size:10pt;font-weight:700; }
-  .stake span { font-size:10.5pt;line-height:1.3; }
-  #stakeholders .note { font-size:9pt!important;margin-top:2mm; }
-  .impact-flow { grid-template-columns:1fr;gap:4mm;margin:5mm 0; }
-  .impact-card { display:grid;grid-template-columns:58mm minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:6mm;border-top:1px solid var(--line);padding-top:4mm; }
-  .impact-card .label,.impact-card h3,.impact-card .description { grid-column:1; }
-  .impact-card h3 { font-size:14pt;line-height:1.2;margin-bottom:2mm; }
-  .impact-card p { font-size:11pt; }
-  .impact-card svg { grid-column:2;grid-row:1 / 4;align-self:center;height:auto;width:100%;max-height:37mm;margin:0; }
-  .outcome { font-size:14pt;line-height:1.3;margin:4mm 0 0;padding:3mm 0 3mm 4mm;border-left:3px solid var(--green);background:none; }
-  .outcome .note { margin-top:2mm; }
-  .impact .note,.impact .evidence { font-size:10pt!important;margin-top:2mm; }
-  #discussion { margin-top:6mm; }
-  #discussion .kicker { display:none; }
-  #discussion h2 { font-size:19pt; }
-  .discussion-grid { grid-template-columns:1fr;gap:0;margin-top:3mm; }
-  .discussion-card { display:grid;grid-template-columns:7mm 37mm 1fr;gap:1mm 3mm;padding:3mm 0;border-top:1px solid var(--line); }
-  .discussion-card .number { grid-column:1;grid-row:1 / 3;font-size:14pt;margin:0; }
-  .discussion-card h3 { grid-column:2;grid-row:1 / 3;font-size:11.5pt;margin:0; }
-  .discussion-card>p:not(.cost) { grid-column:3;font-size:11pt;min-height:0; }
-  .discussion-card .cost { grid-column:3;font-size:9.5pt!important;margin:0; }
-  .closing-sheet .print-notes { padding-top:4mm; }
-  .closing-sheet .note-rules { height:14mm;grid-template-rows:repeat(2,1fr); }
-  .closing-sheet .note-rules i:last-child { display:none; }
+  .decision-bottom { margin-top:3mm;padding-top:2.5mm;border-top:.6pt solid var(--line); }
+  .note,.evidence,.discussion-card .cost { font-size:7.5pt!important;line-height:1.3!important;margin-top:1.5mm; }
+  #rewards .evidence { margin-top:1.5mm; }
+  .presenter { font-size:14pt;margin:5mm 0; }
+  .presenter small { font-size:7pt;margin-bottom:1mm; }
+  .title-bottom { display:block;margin-top:5mm;padding-top:3mm; }
+  .title-bottom p { font-size:11pt;line-height:1.3;max-width:140mm; }
+  .agenda { margin:5mm 0 0; }
+  .agenda a { grid-template-columns:7mm .85fr 1.15fr;gap:4mm;padding:3mm 0; }
+  .agenda a::before { font-size:12pt; }
+  .agenda strong { font-size:11pt; }
+  .agenda span { grid-column:auto;font-size:9pt;line-height:1.3; }
+  .product-role { font-size:8.5pt;margin-top:3mm; }
+  .product-grid { display:block;margin:4mm 0; }
+  .product-block { padding:2.5mm 0;border-top:1pt solid var(--green); }
+  .product-block svg { width:7mm;height:7mm;margin-bottom:2mm; }
+  .case-context { padding-top:3mm; }
+  .stakeholder-map { margin:4mm 0 2mm; }
+  .stake { grid-template-columns:24mm 1fr;gap:2mm;min-height:12mm;padding:2.5mm 0; }
+  .stake b { font-size:8pt; }
+  .stake span { font-size:9pt;line-height:1.25; }
+  .impact-flow { margin:4mm 0 3mm; }
+  .impact-card { padding-top:2.5mm; }
+  .impact-card svg { width:100%;height:23mm;max-height:none;margin:2mm 0 0; }
+  .outcome { font-size:10.5pt;line-height:1.25;margin-top:3mm;padding:2mm 3mm;border:0;border-left:2pt solid var(--green);background:none; }
+  .impact .note { margin-top:1.5mm; }
+  .discussion-grid { grid-template-columns:repeat(3,1fr);gap:5mm;margin-top:6mm; }
+  .discussion-card { padding-top:3mm; }
+  .discussion-card .number { font-size:18pt;margin-bottom:3mm; }
+  .discussion-card>p:not(.cost) { min-height:2.7em; }
 }
 </style>
 </head>
 <body>
 <header><b class="brand">Social LMS <span>/ Product Case Study</span></b><div class="controls"><button id="light" aria-pressed="true">Light</button><button id="dark" aria-pressed="false">Dark</button><button id="print" type="button" title="Print a paper-friendly handout">Print</button><button id="fullscreen" aria-label="Enter fullscreen">Fullscreen</button></div></header>
 <main>
-<div class="print-sheet brief-sheet">
+<div class="print-sheet">
+<div class="print-page-heading" aria-hidden="true"><span>Social LMS / Product Case Study</span><span>Tyler Longest</span></div>
 <section class="scene cover" id="intro"><div class="inner">
 <h1>Social LMS<br><span>Case Study</span></h1><p class="presenter"><small>Presented by</small>Tyler Longest</p><div class="title-bottom"><p>From a client-funded prototype to recurring subscription support.</p><a href="#overview">Presentation overview ↓</a></div>
 </div></section>
 <section class="scene " id="overview"><div class="inner">
 <p class="kicker">Overview</p><div class="slide-heading"><h2>Presentation overview</h2><span class="count">02 / 09</span></div><ol class="agenda"><li><a href="#product"><strong>Product &amp; stakeholders</strong><span>Employee training and competing priorities</span></a></li><li><a href="#admin"><strong>Three product decisions</strong><span>Admin Portal, Learning Paths, and Rewards</span></a></li><li><a href="#impact"><strong>Business impact</strong><span>What changed over 12–18 months</span></a></li><li><a href="#discussion"><strong>Discussion</strong><span>Questions and decision tradeoffs</span></a></li></ol>
 </div></section>
+<div class="print-folio" aria-hidden="true"><span>Presentation handout</span><span>1 / 5</span></div>
+</div>
+<div class="print-sheet">
+<div class="print-page-heading" aria-hidden="true"><span>Social LMS / Product Case Study</span><span>Tyler Longest</span></div>
 <section class="scene " id="product"><div class="inner">
 <p class="kicker">The product · Unboxed Technology</p><div class="slide-heading"><h2>Social LMS</h2><span class="count">03 / 09</span></div><p class="conclusion">A learning management system for employee training and social discussion.</p><p class="product-role">My role at Unboxed: Product Manager</p><div class="product-grid"><div class="product-blocks"><div class="product-block"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="6" width="42" height="30" rx="3" class="box"/><path d="M20 14L31 21L20 28Z" class="fill"/><path d="M16 43H32M24 36V43" class="wire"/></svg><h3>Training</h3><p>Take courses and build knowledge.</p></div><div class="product-block"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 5H37V29H18L8 38V29H4Z" class="box"/><path d="M14 14H29M14 21H25" class="strong-wire"/></svg><h3>Discussion</h3><p>Share expertise.<br>Recognize helpful posts.</p></div></div></div><div class="case-context"><div><p class="label">Starting point</p><p>A client-funded prototype<br>with 2–3 early adopters</p></div><div><p class="label">Business ambition</p><p>Resellable SaaS subscriptions<br>and custom training content sales</p></div></div>
 </div></section>
 <section class="scene " id="stakeholders"><div class="inner">
 <p class="kicker">Context</p><div class="slide-heading"><h2>Stakeholders &amp; objectives</h2><span class="count">04 / 09</span></div><p class="conclusion">One client’s priorities versus a product for many customers.</p><div class="stakeholder-map"><div class="stake-column"><p class="label">Internal</p><div class="stake"><b>CEO</b><span>Retain the client and diversify revenue</span></div><div class="stake"><b>Sales</b><span>Win new customers</span></div><div class="stake"><b>Technology</b><span>Maintain coherent architecture</span></div></div><div class="stake-column"><p class="label">External</p><div class="stake"><b>Tomcast Inc.</b><span>Prioritize funded features</span></div><div class="stake"><b>Prospects</b><span>Meet training requirements</span></div><div class="stake"><b>Administrators</b><span>Control and useful metrics</span></div></div></div><p class="note">Funding client anonymized as “Tomcast Inc.”</p>
 </div></section>
-<div class="print-folio" aria-hidden="true"><span>Tyler Longest · Social LMS Case Study</span><span>1 / 5</span></div>
+<div class="print-folio" aria-hidden="true"><span>Presentation handout</span><span>2 / 5</span></div>
 </div>
-<div class="print-sheet decision-sheet">
+<div class="print-sheet">
+<div class="print-page-heading" aria-hidden="true"><span>Social LMS / Product Case Study</span><span>Tyler Longest</span></div>
 <section class="scene " id="admin"><div class="inner">
 <p class="kicker">Decision 01</p><div class="slide-heading"><h2>Admin Portal</h2><span class="count">05 / 09</span></div><p class="conclusion">Shared administration addressed sales needs and specialist-dependent setup.</p><p class="role"><b>My contribution:</b> Built the investment case with sales and engineering input.</p><div class="comparison"><div><p class="label">1 · Problem</p><h3>Setup depended on specialists</h3><p class="description">Fragile tools required product and engineering.</p><svg viewBox="0 0 560 138" role="img" aria-label="New customer setup relied on product and the lead engineer."><rect class="box" x="0" y="39" width="185" height="60" rx="3"/><text x="92" y="76" text-anchor="middle">Customer setup</text><path class="cost-wire" d="M185 69H240M230 62L240 69L230 76"/><rect class="box" x="240" y="21" width="318" height="96" rx="3"/><text x="399" y="62" text-anchor="middle">Product + lead engineer</text><text class="sub" x="399" y="93" text-anchor="middle">Setup and troubleshooting</text></svg></div><div class="chosen"><p class="label">2 · Decision</p><h3>Shared administration tools</h3><p class="description">Managed setup and customer self-service.</p><svg viewBox="0 0 560 138" role="img" aria-label="Admin Portal supports a dedicated customer rep and customer administrators."><rect class="fill" x="160" y="0" width="240" height="44" rx="3"/><text class="inverse" x="280" y="30" text-anchor="middle">Admin Portal</text><path class="path" d="M280 44V63H132V84M280 63H428V84"/><rect class="box" x="0" y="84" width="264" height="52" rx="3"/><rect class="box" x="296" y="84" width="264" height="52" rx="3"/><text x="132" y="117" text-anchor="middle">Customer rep</text><text x="428" y="117" text-anchor="middle">Customer admins</text></svg></div></div><div class="decision-bottom"><div class="trade"><p class="label">3 · Tradeoff</p><p>Delayed Tomcast features.</p><p class="note">Tomcast already paid us to manage its instance.</p></div><div class="result"><p class="label">4 · Observed result</p><p>Almost all managed implementation moved to the customer rep.</p><p class="note">Stronger buyer response and customer self-service.</p></div></div>
 </div></section>
-<div class="print-notes" aria-hidden="true"><p class="label">Notes &amp; questions</p><div class="note-rules"><i></i><i></i><i></i></div></div><div class="print-folio" aria-hidden="true"><span>Tyler Longest · Social LMS Case Study</span><span>2 / 5</span></div>
-</div>
-<div class="print-sheet decision-sheet">
 <section class="scene" id="learning" aria-labelledby="learning-title"><div class="inner">
   <p class="kicker">Decision 02</p>
   <div class="slide-heading"><h2 id="learning-title">Learning Paths</h2><span class="count">06 / 09</span></div>
@@ -171,20 +140,22 @@ h2{font-size:clamp(42px,3.6vw,66px);line-height:1.08}.conclusion{font-size:clamp
     <div class="result"><p class="label">4 · Observed result</p><p>Positive demos, fewer sales escalations,<br>and new content discussions.</p><p class="note">Qualitative signals. Conditional requests remained.</p></div>
   </div>
 </div></section>
-<div class="print-notes" aria-hidden="true"><p class="label">Notes &amp; questions</p><div class="note-rules"><i></i><i></i><i></i></div></div><div class="print-folio" aria-hidden="true"><span>Tyler Longest · Social LMS Case Study</span><span>3 / 5</span></div>
+<div class="print-folio" aria-hidden="true"><span>Presentation handout</span><span>3 / 5</span></div>
 </div>
-<div class="print-sheet decision-sheet">
+<div class="print-sheet">
+<div class="print-page-heading" aria-hidden="true"><span>Social LMS / Product Case Study</span><span>Tyler Longest</span></div>
 <section class="scene " id="rewards"><div class="inner">
 <p class="kicker">Decision 03</p><div class="slide-heading"><h2>Rewards</h2><span class="count">07 / 09</span></div><p class="conclusion">Customer funding justified Rewards while core LMS work waited.</p><p class="role"><b>My contribution:</b> Developed the concept with a designer and presented with the CEO and Account Executive.</p><div class="comparison"><div><p class="label">1 · Problem</p><h3>Customer funding for gamification</h3><p class="description">Core LMS needs competed for capacity.</p><svg viewBox="0 0 560 138" role="img" aria-label="Funded gamification competed with core LMS work."><rect class="box" x="0" y="15" width="230" height="108" rx="3"/><text x="115" y="57" text-anchor="middle">Gamification</text><text class="sub" x="115" y="91" text-anchor="middle">Client funding</text><text x="280" y="77" text-anchor="middle" style="fill:var(--rust)">vs</text><rect class="box" x="330" y="15" width="228" height="108" rx="3"/><text x="444" y="57" text-anchor="middle">Core LMS work</text><text class="sub" x="444" y="91" text-anchor="middle">Broader needs</text></svg></div><div class="chosen"><p class="label">2 · Decision</p><h3>Redeemable social recognition</h3><p class="description">Peers gave coins for helpful forum posts.</p><svg viewBox="0 0 560 138" role="img" aria-label="Helpful posts earn coins redeemable for a speaker, tablet, or time off."><rect class="box" x="0" y="42" width="162" height="54" rx="3"/><text x="81" y="76" text-anchor="middle">Helpful posts</text><path class="path" d="M162 69H203M193 62L203 69L193 76M317 69H358M348 62L358 69L348 76"/><circle cx="260" cy="69" r="54" fill="none" stroke="var(--rust)" stroke-width="2"/><text x="260" y="77" text-anchor="middle">Coins</text><rect class="box" x="358" y="2" width="200" height="134" rx="3"/><text x="458" y="37" text-anchor="middle">Speaker</text><text x="458" y="77" text-anchor="middle">Tablet</text><text x="458" y="117" text-anchor="middle">Time off</text></svg></div></div><div class="decision-bottom"><div class="trade"><p class="label">3 · Tradeoff</p><p>Deferred course-standard updates (SCORM), infrastructure, and admin work.</p></div><div class="result"><p class="label">4 · Observed result</p><p>Funding secured.</p><p class="note">Uneven appeal. Stronger fit with sales-oriented teams.</p></div></div>
 <p class="evidence">CEO and Account Executive negotiated funding. Sales and marketing led targeting; I supported messaging and discovery.</p></div></section>
-<div class="print-notes" aria-hidden="true"><p class="label">Notes &amp; questions</p><div class="note-rules"><i></i><i></i><i></i></div></div><div class="print-folio" aria-hidden="true"><span>Tyler Longest · Social LMS Case Study</span><span>4 / 5</span></div>
-</div>
-<div class="print-sheet closing-sheet">
 <section class="scene impact" id="impact"><div class="inner"><p class="kicker">Business impact · Approximately 12–18 months</p><div class="slide-heading"><h2>Subscriptions funded the team</h2><span class="count">08 / 09</span></div><div class="impact-flow"><div class="impact-card"><p class="label">Before</p><h3>One client’s development contracts</h3><p class="description">A prototype with 2–3 early adopters.</p><svg viewBox="0 0 490 180" role="img" aria-label="Before: a single client's development contract supports the product team"><rect x="15" y="55" width="195" height="70" rx="4" class="box"/><text x="112" y="96" text-anchor="middle">Tomcast contract</text><path class="cost-wire" d="M210 90H290M280 83L290 90L280 97"/><rect x="290" y="55" width="185" height="70" rx="4" class="box"/><text x="382" y="96" text-anchor="middle">Product team</text></svg></div><div class="impact-card"><p class="label">After</p><h3>Recurring LMS subscriptions</h3><p class="description">Revenue from Tomcast and other customers.</p><svg viewBox="0 0 490 180" role="img" aria-label="After: subscriptions from Tomcast and other customers fund the product team"><rect x="15" y="15" width="195" height="60" rx="4" class="box"/><text x="112" y="51" text-anchor="middle">Tomcast</text><rect x="15" y="105" width="195" height="60" rx="4" class="box"/><text x="112" y="141" text-anchor="middle">Other customers</text><path class="strong-wire" d="M210 45H250V135H210M250 90H290M280 83L290 90L280 97"/><rect x="290" y="55" width="185" height="70" rx="4" class="fill"/><text x="382" y="96" text-anchor="middle" class="inverse">Product team</text></svg></div></div><div class="outcome"><strong>Recurring subscription revenue covered the team’s costs.</strong><p class="note">Less dependence on one client’s development contracts.</p></div><p class="note">The LMS also provided a channel for custom training content sales.</p><p class="evidence">Retrospective account. These decisions contributed alongside the wider team’s work.</p></div></section>
+<div class="print-folio" aria-hidden="true"><span>Presentation handout</span><span>4 / 5</span></div>
+</div>
+<div class="print-sheet">
+<div class="print-page-heading" aria-hidden="true"><span>Social LMS / Product Case Study</span><span>Tyler Longest</span></div>
 <section class="scene " id="discussion"><div class="inner">
 <p class="kicker">Discussion</p><div class="slide-heading"><h2>Three decisions, explicit tradeoffs</h2><span class="count">09 / 09</span></div><div class="discussion-grid"><a class="discussion-card" href="#admin"><div class="number">01</div><h3>Admin Portal</h3><p>Why prioritize administration?</p><p class="cost">Delayed Tomcast features.</p><span>Explore the decision ↗</span></a><a class="discussion-card" href="#learning"><div class="number">02</div><h3>Learning Paths</h3><p>What did simpler scope leave out?</p><p class="cost">Left advanced conditions out.</p><span>Explore the decision ↗</span></a><a class="discussion-card" href="#rewards"><div class="number">03</div><h3>Rewards</h3><p>When was customer funding worth the delay?</p><p class="cost">Deferred core LMS work.</p><span>Explore the decision ↗</span></a></div>
 </div></section>
-<div class="print-notes" aria-hidden="true"><p class="label">Notes &amp; questions</p><div class="note-rules"><i></i><i></i><i></i></div></div><div class="print-folio" aria-hidden="true"><span>Tyler Longest · Social LMS Case Study</span><span>5 / 5</span></div>
+<div class="print-folio" aria-hidden="true"><span>Presentation handout</span><span>5 / 5</span></div>
 </div>
 </main>
 <footer class="bottom"><div class="progress" id="progress"></div><nav class="chapter-nav" aria-label="Chapters"><a href="#intro" aria-current="true">Intro</a><a href="#overview">Overview</a><a href="#product">Social LMS</a><a href="#stakeholders">Stakeholders</a><a href="#admin">Admin Portal</a><a href="#learning">Learning Paths</a><a href="#rewards">Rewards</a><a href="#impact">Impact</a><a href="#discussion">Discussion</a></nav><div class="controls"><button id="prev" aria-label="Previous chapter" disabled>←</button><button id="next" aria-label="Next chapter">→</button></div></footer>
