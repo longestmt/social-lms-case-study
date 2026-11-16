@@ -2,7 +2,7 @@
 
 A product management presentation by Tyler Longest about the development of Unboxed Technology's social LMS.
 
-The case covers the product and stakeholders, three feature decisions (Admin Portal, Learning Paths, and Rewards), roadmap reviews, and the business outcome. Client names are sanitized where appropriate.
+The case covers the product and stakeholders, three feature decisions (Admin Portal, Learning Paths, and Rewards), and the business outcome. Client names are sanitized where appropriate.
 
 ## View
 
