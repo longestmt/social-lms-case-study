@@ -15,7 +15,7 @@ For offline viewing, download `index.html` and open it in a browser. The present
 - Scroll naturally, use the chapter links, or use the previous/next buttons.
 - Use the left/right arrow keys when focus is outside a control.
 - Light mode is the default; Dark mode and fullscreen are available in the controls.
-- Select **Print** (or use the browser’s print command) for a five-page portrait handout with two framed, landscape slides per page (one slide on the final page). Each presentation section stays together in its own slide. Printing uses a white background in either screen theme. Letter and A4 are supported; disable browser headers and footers for a clean copy.
+- Select **Print** to open a dedicated print handout (`handout.html`) formatted for paper: 4 portrait pages with two framed, numbered landscape slides each (like a printed PowerPoint deck), optimized for black-and-white double-sided printing on US letter (A4 also fits). Each slide — including its diagrams — stays intact inside its frame. In the print dialog, choose **Save as PDF** for a digital copy. The handout maintains its own copy of the content, so update `handout.html` alongside `index.html` when editing.
 
 ## Edit and deploy
 

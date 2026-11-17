@@ -196,7 +196,7 @@ svg .small{font-size:18px}
 <body>
 <header>
   <span class="brand"><b>Social LMS</b> <span>/ a product case study</span></span>
-  <div class="controls"><button id="light" aria-pressed="true">Light</button><button id="dark" aria-pressed="false">Dark</button><button id="print" type="button" title="Print a paper-friendly handout">Print</button><button id="fullscreen" aria-label="Enter fullscreen">Fullscreen</button></div>
+  <div class="controls"><button id="light" aria-pressed="true">Light</button><button id="dark" aria-pressed="false">Dark</button><button id="print" type="button" title="Open the print-formatted handout">Print</button><button id="fullscreen" aria-label="Enter fullscreen">Fullscreen</button></div>
 </header>
 <main>
 
@@ -434,7 +434,7 @@ function step(direction){const rect=scenes[current].getBoundingClientRect();cons
 document.getElementById('prev').onclick=()=>step(-1);document.getElementById('next').onclick=()=>step(1);
 addEventListener('keydown',e=>{if(e.ctrlKey||e.altKey||e.metaKey||e.shiftKey||e.target.isContentEditable||/INPUT|TEXTAREA|SELECT|BUTTON|A|SUMMARY/.test(e.target.tagName))return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();step(1);}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();step(-1);}});
 for(const id of ['light','dark'])document.getElementById(id).onclick=()=>{document.body.classList.toggle('dark',id==='dark');document.getElementById('light').setAttribute('aria-pressed',String(id==='light'));document.getElementById('dark').setAttribute('aria-pressed',String(id==='dark'));};
-document.getElementById('print').onclick=()=>window.print();
+document.getElementById('print').onclick=()=>window.open('handout.html','_blank');
 const fs=document.getElementById('fullscreen');if(!document.fullscreenEnabled)fs.hidden=true;fs.onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{fs.title='Fullscreen unavailable';}};document.addEventListener('fullscreenchange',()=>{fs.setAttribute('aria-label',document.fullscreenElement?'Exit fullscreen':'Enter fullscreen');fs.textContent=document.fullscreenElement?'Exit fullscreen':'Fullscreen';});
 </script>
 </body>
